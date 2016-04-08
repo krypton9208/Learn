@@ -2,6 +2,7 @@
 using NHibernate.Cfg;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -11,11 +12,8 @@ namespace Learn.Models.NHibernate
     {
         public static ISession OpenSession()
         {
-            var configuration = new Configuration();
-            var configurationPath = HttpContext.Current.Server.MapPath(@"~\NHibernate.cfg.xml");
-            configuration.Configure(configurationPath);
-            //var configurationFile = HttpContext.Current.Server.MapPath(@"~\Models\Mapping\Employee.hbm.xml");
-            //configuration.AddFile(configurationFile);
+            var configuration = new Configuration().Configure(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "NHibernate.cfg.xml"));
+            
             ISessionFactory sessionFactory = configuration.BuildSessionFactory();
             return sessionFactory.OpenSession();
         }

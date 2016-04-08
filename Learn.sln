@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learn", "Learn\Learn.csproj", "{9E3FA30A-75D2-4670-8260-A56089B6FA66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learn.Models", "Learn.Models\Learn.Models.csproj", "{C8EA2C51-116F-428D-8817-95E820B10939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learn.Repos", "Learn.Repos\Learn.Repos.csproj", "{B549F9B2-8D44-486A-83A6-9885DD1C2878}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{9E3FA30A-75D2-4670-8260-A56089B6FA66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E3FA30A-75D2-4670-8260-A56089B6FA66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E3FA30A-75D2-4670-8260-A56089B6FA66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8EA2C51-116F-428D-8817-95E820B10939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8EA2C51-116F-428D-8817-95E820B10939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8EA2C51-116F-428D-8817-95E820B10939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8EA2C51-116F-428D-8817-95E820B10939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B549F9B2-8D44-486A-83A6-9885DD1C2878}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B549F9B2-8D44-486A-83A6-9885DD1C2878}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B549F9B2-8D44-486A-83A6-9885DD1C2878}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B549F9B2-8D44-486A-83A6-9885DD1C2878}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

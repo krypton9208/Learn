@@ -13,6 +13,6 @@
     <property name="dialect">
       NHibernate.Dialect.MySQL5Dialect
     </property>
-    <mapping resource="Learn.Models.Mapping.Employee.hbm.xml" assembly="Learn" />
+    <mapping resource="Learn.Models.Mapping.Employee.hbm.xml" assembly="Learn.Models" />
   </session-factory>
 </hibernate-configuration>
