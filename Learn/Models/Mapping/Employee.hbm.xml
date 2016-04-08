@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Learn.Models.Employee, Learn" table="employees">
+    <id name="Id" column="ID" type="int">
+      <generator class="native"></generator>
+    </id>
+    <property name="FirstName" column="FirstName"
+              type="String"></property>
+    <property name="LastName" column="LastName"
+              type="String"></property>
+  </class>
+  
+</hibernate-mapping>
