@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Learn.Repos.Abstract
 {
-    public interface IRepository<T>
+    public interface IEmployeesRepository<T>
     {
         IEnumerable<T> GetAll { get;}
         int Add(T t);
         bool Update(T t);
         bool Delete(T t);
-        T GetById(Type objType, int t);
+        T GetById( int t);
     }
 }

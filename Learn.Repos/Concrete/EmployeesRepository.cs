@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Learn.Repos.Concrete
 {
-    public class EmployeesRepository : IRepository<Employee>, IDisposable
+    public class EmployeesRepository : IEmployeesRepository<Employee>, IDisposable
     {
         private readonly ISession _session;
         private ITransaction _transaction;
@@ -32,6 +32,11 @@ namespace Learn.Repos.Concrete
 
 
         #region CRUD methods
+
+        public Employee GetById(int t)
+        {
+            return _session.Get<Employee>(t);
+        }
 
         public int Add(Employee t)
         {
@@ -126,10 +131,7 @@ namespace Learn.Repos.Concrete
             _session.Dispose();
         }
 
-        public Employee GetById(Type objType, int t)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         #endregion
 

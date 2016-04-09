@@ -1,14 +1,9 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
 using Learn.Models;
-using Learn.Models.NHibernate;
 using Learn.Repos.Abstract;
 using Learn.Repos.Concrete;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security.DataProtection;
-using NHibernate;
 using Owin;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Learn
@@ -20,7 +15,7 @@ namespace Learn
             var builder = new ContainerBuilder();
 
             // REGISTER DEPENDENCIES
-            builder.RegisterType<EmployeesRepository>().As<IRepository<Employee>>();
+            builder.RegisterType<EmployeesRepository>().As<IEmployeesRepository<Employee>>().InstancePerRequest();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             // BUILD CONTAINER
