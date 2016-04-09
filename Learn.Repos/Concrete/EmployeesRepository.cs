@@ -1,4 +1,5 @@
 ﻿using Learn.Models;
+using Learn.Models.NHibernate;
 using Learn.Repos.Abstract;
 using NHibernate;
 using NHibernate.Linq;
@@ -16,9 +17,9 @@ namespace Learn.Repos.Concrete
         private readonly ISession _session;
         private ITransaction _transaction;
 
-        public EmployeesRepository(ISession session)
+        public EmployeesRepository()
         {
-            _session = session;
+            _session = NHibernateSession.OpenSession();
         }
        
         public IEnumerable<Employee> GetAll

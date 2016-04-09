@@ -6,6 +6,7 @@ using Learn.Repos.Abstract;
 using Learn.Repos.Concrete;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security.DataProtection;
+using NHibernate;
 using Owin;
 using System.Web;
 using System.Web.Mvc;
@@ -19,8 +20,7 @@ namespace Learn
             var builder = new ContainerBuilder();
 
             // REGISTER DEPENDENCIES
-            // builder.RegisterType<NHibernateSession>().AsSelf().InstancePerRequest();
-            builder.RegisterType<EmployeesRepository>().As<IRepository<Employee>>().InstancePerRequest();
+            builder.RegisterType<EmployeesRepository>().As<IRepository<Employee>>();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
 
             // BUILD CONTAINER
