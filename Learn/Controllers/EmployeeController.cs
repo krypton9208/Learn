@@ -13,18 +13,30 @@ namespace Learn.Controllers
 {
     public class EmployeeController : Controller
     {
-        private readonly IRepository<Employee> _repository;
+        private readonly IEmployeesRepository<Employee> _repository;
 
-        public EmployeeController(IRepository<Employee> repo)
+        public EmployeeController(IEmployeesRepository<Employee> repo)
         {
             _repository = repo;
         }
 
-        // GET: Employee
-
         public ActionResult Index()
         {
             return View(_repository.GetAll);
+        }
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add(Employee model)
+        {
+            if (_repository.Add(model) >0)
+                return RedirectToAction("Index");
+            return View(model);
         }
     }
 }
