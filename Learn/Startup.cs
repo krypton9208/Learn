@@ -5,6 +5,7 @@ using Learn.Repos.Abstract;
 using Learn.Repos.Concrete;
 using Owin;
 using System.Web.Mvc;
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "Web.config", Watch = true)]
 
 namespace Learn
 {

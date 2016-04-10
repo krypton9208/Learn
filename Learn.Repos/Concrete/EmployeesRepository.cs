@@ -52,7 +52,7 @@ namespace Learn.Repos.Concrete
             {
                 _session.Flush();
             }
-            catch (IOException e)
+            catch
             {
                 return false;
             }
@@ -74,7 +74,7 @@ namespace Learn.Repos.Concrete
             {
                 _session.Flush();
             }
-            catch (IOException e)
+            catch 
             {
                 return false;
             }
