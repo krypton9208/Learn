@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Learn.Repos.Abstract
+namespace Learn.Logger
 {
-    public interface IEmployeesRepository<T> : IRepository<T>
+    public class Class1
     {
-     
     }
 }

@@ -57,6 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IEmployeesRepository.cs" />
+    <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Concrete\Repository.cs" />
     <Compile Include="Concrete\EmployeesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

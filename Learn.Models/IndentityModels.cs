@@ -7,7 +7,4 @@ using NHibernate.AspNet.Identity;
 
 namespace Learn.Models
 {
-    public class AppUser : ApplicationIdentity
-    {
-    }
 }
