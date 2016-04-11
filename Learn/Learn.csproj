@@ -288,6 +288,10 @@
     <Folder Include="Logs\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Learn.Logger\Learn.Logger.csproj">
+      <Project>{a9dff9c3-d58c-44b2-bd14-de7be5af8202}</Project>
+      <Name>Learn.Logger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Learn.Models\Learn.Models.csproj">
       <Project>{c8ea2c51-116f-428d-8817-95e820b10939}</Project>
       <Name>Learn.Models</Name>

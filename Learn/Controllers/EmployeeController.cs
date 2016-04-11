@@ -1,6 +1,8 @@
-﻿using Learn.Models;
+﻿using Learn.Logger;
+using Learn.Models;
 using Learn.Models.NHibernate;
 using Learn.Repos.Abstract;
+using log4net;
 using NHibernate;
 using NHibernate.Linq;
 using System;
@@ -13,21 +15,25 @@ namespace Learn.Controllers
 {
     public class EmployeeController : Controller
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(EmployeeController));
+        
         private readonly IEmployeesRepository<Employee> _repository;
+        private readonly ILoggerService<EmployeeController> log;
 
-        public EmployeeController(IEmployeesRepository<Employee> repo)
+        public EmployeeController(IEmployeesRepository<Employee> repo, ILoggerService<EmployeeController> _log)
         {
             _repository = repo;
+            log = _log;
         }
 
         public ActionResult Index()
         {
+            log.WriteInfo("EmployeeIndex GetAction");
             return View(_repository.GetAll);
         }
 
         public ActionResult Add()
         {
+            log.WriteInfo("Employee/Add Get Action");
             return View();
         }
 
@@ -37,7 +43,7 @@ namespace Learn.Controllers
         {
             if (_repository.Add(model) >=0) 
                 return RedirectToAction("Index");
-            log.Error("Obiekt nie został dodany");
+            log.WriteError("Obiekt nie został dodany");
             return View(model);
         }
 
@@ -52,7 +58,7 @@ namespace Learn.Controllers
         {
             if (_repository.Delete(model))
                return RedirectToAction("Index");
-            log.Error("Obiekt nie został usunięty.");
+            log.WriteError("Obiekt nie został usunięty.");
             return View();
         }
 
@@ -67,7 +73,7 @@ namespace Learn.Controllers
         {
             if (_repository.Update(model))
                 return RedirectToAction("Index");
-            log.Error("Obiekt nie został zaaktualizowany.");
+            log.WriteError("Obiekt nie został zaaktualizowany.");
             return View(model);
         }
     }

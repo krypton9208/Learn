@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learn.Models", "Learn.Model
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learn.Repos", "Learn.Repos\Learn.Repos.csproj", "{B549F9B2-8D44-486A-83A6-9885DD1C2878}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learn.Logger", "Learn.Logger\Learn.Logger.csproj", "{A9DFF9C3-D58C-44B2-BD14-DE7BE5AF8202}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B549F9B2-8D44-486A-83A6-9885DD1C2878}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B549F9B2-8D44-486A-83A6-9885DD1C2878}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B549F9B2-8D44-486A-83A6-9885DD1C2878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9DFF9C3-D58C-44B2-BD14-DE7BE5AF8202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9DFF9C3-D58C-44B2-BD14-DE7BE5AF8202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9DFF9C3-D58C-44B2-BD14-DE7BE5AF8202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9DFF9C3-D58C-44B2-BD14-DE7BE5AF8202}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

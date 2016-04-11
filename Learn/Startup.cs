@@ -5,7 +5,10 @@ using Learn.Repos.Abstract;
 using Learn.Repos.Concrete;
 using Owin;
 using System.Web.Mvc;
-[assembly: log4net.Config.XmlConfigurator(ConfigFile = "Web.config", Watch = true)]
+using Learn.Logger;
+using log4net;
+using System;
+using log4net.Config;
 
 namespace Learn
 {
@@ -17,11 +20,10 @@ namespace Learn
 
             // REGISTER DEPENDENCIES
             builder.RegisterType<EmployeesRepository>().As<IEmployeesRepository<Employee>>().InstancePerRequest();
+            builder.RegisterGeneric(typeof(LoggerService<>)).As(typeof(ILoggerService<>));
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
-
             // BUILD CONTAINER
             var container = builder.Build();
-
 
             // SET AUTOFAC DEPENDENCY RESOLVER
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
