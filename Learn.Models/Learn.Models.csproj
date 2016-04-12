@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Employee.cs" />
     <Compile Include="IndentityModels.cs" />
+    <Compile Include="LearnDbContext.cs" />
     <Compile Include="NHibernate\NHibernateSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
