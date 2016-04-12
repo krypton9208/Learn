@@ -9,6 +9,14 @@ using Learn.Logger;
 using log4net;
 using System;
 using log4net.Config;
+using Microsoft.Owin;
+using Learn.Models.NHibernate;
+using NHibernate;
+using SharpArch.NHibernate.Web.Mvc;
+using Learn.App_Start;
+using NHibernate.AspNet.Identity.Helpers;
+
+[assembly: OwinStartupAttribute(typeof(Learn.Startup))]
 
 namespace Learn
 {
@@ -16,9 +24,10 @@ namespace Learn
     {
         public void Configuration(IAppBuilder app)
         {
+           
             var builder = new ContainerBuilder();
-
             // REGISTER DEPENDENCIES
+            //builder.RegisteType<NHibernateSession>().As<ISession>().InstancePerRequest();
             builder.RegisterType<EmployeesRepository>().As<IEmployeesRepository<Employee>>().InstancePerRequest();
             builder.RegisterGeneric(typeof(LoggerService<>)).As(typeof(ILoggerService<>));
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
@@ -33,8 +42,13 @@ namespace Learn
             app.UseAutofacMvc();
 
             ConfigureAuth(app);
+            ConfigureData();
 
-
+        }
+        private static void ConfigureData()
+        {
+            var storage = new WebSessionStorage(System.Web.HttpContext.Current.ApplicationInstance);
+            Models.NHibernate.DataConfig.Configure(storage);
         }
     }
 }

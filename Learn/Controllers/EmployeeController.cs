@@ -1,14 +1,6 @@
 ﻿using Learn.Logger;
 using Learn.Models;
-using Learn.Models.NHibernate;
 using Learn.Repos.Abstract;
-using log4net;
-using NHibernate;
-using NHibernate.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Learn.Controllers
@@ -27,7 +19,7 @@ namespace Learn.Controllers
 
         public ActionResult Index()
         {
-            log.WriteInfo("EmployeeIndex GetAction");
+            log.WriteInfo("Employee/Index GetAction");
             return View(_repository.GetAll);
         }
 

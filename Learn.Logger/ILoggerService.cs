@@ -1,5 +1,4 @@
-﻿using log4net.Core;
-
+﻿
 namespace Learn.Logger
 {
     public interface ILoggerService<T>

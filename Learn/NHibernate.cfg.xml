@@ -14,5 +14,6 @@
       NHibernate.Dialect.MySQL5Dialect
     </property>
     <mapping resource="Learn.Models.Mapping.Employee.hbm.xml" assembly="Learn.Models" />
+    <mapping resource="Learn.Models.Mapping.IdentityModels.hbm.xml" assembly="Learn.Models"/>
   </session-factory>
 </hibernate-configuration>
