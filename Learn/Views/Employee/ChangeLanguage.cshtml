@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "ChangeLanguage";
+}
+
+<h2>ChangeLanguage</h2>
+@{
+    var foo = new List<SelectListItem> {
+        new SelectListItem { Text = "Polski", Value = "pl-PL", Selected = true },
+        new SelectListItem { Text = "Angielski", Value = "en-EN" }
+    };
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ListBox("Language", foo)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+

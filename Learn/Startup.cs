@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Learn.Logger;
 using Microsoft.Owin;
 using SharpArch.NHibernate.Web.Mvc;
+using Learn.Language;
 
 [assembly: OwinStartupAttribute(typeof(Learn.Startup))]
 
@@ -23,6 +24,7 @@ namespace Learn
             //builder.RegisteType<NHibernateSession>().As<ISession>().InstancePerRequest();
             builder.RegisterType<EmployeesRepository>().As<IEmployeesRepository<Employee>>().InstancePerRequest();
             builder.RegisterGeneric(typeof(LoggerService<>)).As(typeof(ILoggerService<>));
+            builder.RegisterType<Language.Language>().As<ILanguage>();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             // BUILD CONTAINER
             var container = builder.Build();

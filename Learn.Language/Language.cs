@@ -3,15 +3,28 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Learn.Language
 {
     public class Language : ILanguage
     {
+        private string lang;
         public CultureInfo GetResource(string _lang)
         {
-            return CultureInfo.CreateSpecificCulture("pl-PL");
+            lang = _lang;
+            return CultureInfo.CreateSpecificCulture(_lang);
+        }
+
+        public string GetResourceLogout
+        {
+            get
+            {
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("lang");
+                return Resource.Logout;
+            }
+
         }
     }
 }

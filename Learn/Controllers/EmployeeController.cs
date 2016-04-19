@@ -1,4 +1,6 @@
-﻿using Learn.Logger;
+﻿using Learn.App_Start;
+using Learn.Language;
+using Learn.Logger;
 using Learn.Models;
 using Learn.Repos.Abstract;
 using System.Web.Mvc;
@@ -10,18 +12,35 @@ namespace Learn.Controllers
         
         private readonly IEmployeesRepository<Employee> _repository;
         private readonly ILoggerService<EmployeeController> log;
+        private readonly ILanguage lang;
 
-        public EmployeeController(IEmployeesRepository<Employee> repo, ILoggerService<EmployeeController> _log)
+        public EmployeeController(IEmployeesRepository<Employee> repo, ILoggerService<EmployeeController> _log, ILanguage _lang)
         {
             _repository = repo;
             log = _log;
+            lang = _lang;
         }
         
         public ActionResult Index()
         {
+           
+            ViewBag.Logout = lang.GetResourceLogout;
             log.WriteInfo("Employee/Index GetAction");
             return View(_repository.GetAll);
         }
+
+        public ActionResult ChangeLanguage()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeLanguage(string Language)
+        {
+            GlobalizeFilterAttribute.SavePreferredCulture(HttpContext.Response, Language, 30);
+            return RedirectToAction("Index");
+        }
+
         [Authorize(Roles = "Admin")]
         public ActionResult Add()
         {
