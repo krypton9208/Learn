@@ -26,8 +26,8 @@ namespace Learn.Models.NHibernate
             var foo = new string[] { mapping.AsString() };
             // var configuration = SharpArch.NHibernate.NHibernateSession.Init(storage, foo);
             var configuration = new Configuration().Configure(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "NHibernate.cfg.xml"));
-            //configuration.AddDeserializedMapping(MappingHelper.GetIdentityMappings(myEntities), null);
-            BuildSchema(configuration);
+
+            //BuildSchema(configuration);
         }
 
         private static void DefineBaseClass(ConventionModelMapper mapper, System.Type[] baseEntityToIgnore)

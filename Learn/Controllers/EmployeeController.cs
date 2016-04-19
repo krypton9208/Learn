@@ -16,19 +16,20 @@ namespace Learn.Controllers
             _repository = repo;
             log = _log;
         }
-
+        
         public ActionResult Index()
         {
             log.WriteInfo("Employee/Index GetAction");
             return View(_repository.GetAll);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Add()
         {
             log.WriteInfo("Employee/Add Get Action");
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Add(Employee model)
@@ -38,12 +39,12 @@ namespace Learn.Controllers
             log.WriteError("Obiekt nie został dodany");
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             return View(_repository.GetById(id));
-        } 
-
+        }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Employee model)

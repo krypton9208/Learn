@@ -6,15 +6,8 @@ using Learn.Repos.Concrete;
 using Owin;
 using System.Web.Mvc;
 using Learn.Logger;
-using log4net;
-using System;
-using log4net.Config;
 using Microsoft.Owin;
-using Learn.Models.NHibernate;
-using NHibernate;
 using SharpArch.NHibernate.Web.Mvc;
-using Learn.App_Start;
-using NHibernate.AspNet.Identity.Helpers;
 
 [assembly: OwinStartupAttribute(typeof(Learn.Startup))]
 
