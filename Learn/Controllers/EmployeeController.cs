@@ -23,8 +23,7 @@ namespace Learn.Controllers
         
         public ActionResult Index()
         {
-           
-            ViewBag.Logout = lang.GetResourceLogout;
+            ViewBag.Logout = lang.GetResourceLogout(GlobalizeFilterAttribute.GetSavedCultureOrDefault(HttpContext.Request));
             log.WriteInfo("Employee/Index GetAction");
             return View(_repository.GetAll);
         }

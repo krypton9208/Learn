@@ -6,6 +6,6 @@ namespace Learn.Language
     public interface ILanguage
     {
         CultureInfo GetResource(string _lang);
-        string GetResourceLogout { get; }
+        string GetResourceLogout(string l);
     }
 }

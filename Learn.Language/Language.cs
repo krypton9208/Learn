@@ -17,14 +17,12 @@ namespace Learn.Language
             return CultureInfo.CreateSpecificCulture(_lang);
         }
 
-        public string GetResourceLogout
+        public string GetResourceLogout(string l)
         {
-            get
-            {
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture("lang");
-                return Resource.Logout;
-            }
-
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(l);
+            l = lang;
+            return Resource.Logout;
         }
+
     }
 }
