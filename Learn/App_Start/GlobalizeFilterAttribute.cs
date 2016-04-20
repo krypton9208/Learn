@@ -15,7 +15,6 @@ namespace Learn.App_Start
     {
         public static string CookieLangEntry { get; private set; }
         public static string CookieName { get; private set; }
-
         public static String GetSavedCultureOrDefault(HttpRequestBase httpRequestBase)
         {
             var culture = "";
@@ -24,6 +23,12 @@ namespace Learn.App_Start
                 culture = cookie.Values[CookieLangEntry];
             return culture;
         }
+
+
+        //public GlobalizeFilterAttribute(ILanguage _Lang)
+        //{
+        //    Lang = _Lang;
+        //}
 
         public static void SavePreferredCulture(HttpResponseBase response, string language, int expireDays = 1)
         {
@@ -42,7 +47,7 @@ namespace Learn.App_Start
 
             if (!string.IsNullOrWhiteSpace(language))
             {
-                var cultureInfo = new Learn.Language.Language().GetResource(language);
+                var cultureInfo =  new Language.Language().GetResource(language);
                 Thread.CurrentThread.CurrentCulture = cultureInfo;
                 Thread.CurrentThread.CurrentUICulture = cultureInfo;
             }

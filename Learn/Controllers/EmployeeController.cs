@@ -12,18 +12,15 @@ namespace Learn.Controllers
         
         private readonly IEmployeesRepository<Employee> _repository;
         private readonly ILoggerService<EmployeeController> log;
-        private readonly ILanguage lang;
 
-        public EmployeeController(IEmployeesRepository<Employee> repo, ILoggerService<EmployeeController> _log, ILanguage _lang)
+        public EmployeeController(IEmployeesRepository<Employee> repo, ILoggerService<EmployeeController> _log)
         {
             _repository = repo;
             log = _log;
-            lang = _lang;
         }
         
         public ActionResult Index()
         {
-            ViewBag.Logout = lang.GetResourceLogout(GlobalizeFilterAttribute.GetSavedCultureOrDefault(HttpContext.Request));
             log.WriteInfo("Employee/Index GetAction");
             return View(_repository.GetAll);
         }
@@ -38,6 +35,7 @@ namespace Learn.Controllers
         {
             GlobalizeFilterAttribute.SavePreferredCulture(HttpContext.Response, Language, 30);
             return RedirectToAction("Index");
+            
         }
 
         [Authorize(Roles = "Admin")]
