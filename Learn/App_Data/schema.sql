@@ -35,8 +35,9 @@ alter table LearnUser  drop foreign key FKCADD6A597D744852
 
     create table employees (
         ID INTEGER NOT NULL AUTO_INCREMENT,
-       FirstName VARCHAR(255),
-       LastName VARCHAR(255),
+       Name VARCHAR(255),
+       Solution VARCHAR(255),
+       Category VARCHAR(255),
        primary key (ID)
     )
 

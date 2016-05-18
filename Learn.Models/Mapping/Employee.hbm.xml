@@ -4,10 +4,12 @@
     <id name="Id" column="ID" type="int">
       <generator class="native"></generator>
     </id>
-    <property name="FirstName" column="FirstName"
+    <property name="Name" column="Name"
               type="String"></property>
-    <property name="LastName" column="LastName"
-              type="String"></property>
+    <property name="Solution" column="Solution"
+              type="String" length="1000000000"></property>
+    <property name="Category" column="Category"
+          type="String"></property>
   </class>
   
 </hibernate-mapping>

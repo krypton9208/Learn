@@ -11,16 +11,18 @@ namespace Learn.Models
     public class Employee
     {
         public virtual int Id { get; set; }
-        public virtual string FirstName { get; set; }
-        public virtual string LastName { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Solution { get; set; }
+        public virtual string Category { get; set; }
     }
 
     public class EmployeeValidator : AbstractValidator<Employee>
     {
         public EmployeeValidator()
         {
-            RuleFor(emp => emp.FirstName).NotEmpty().WithMessage("This field can't be blank").Length(3, 250).WithMessage("Plese specify a first name.");
-            RuleFor(emp => emp.LastName).NotEmpty().WithMessage("This field can't be blank").Length(3, 250).WithMessage("Plese specify a last name.");
+            RuleFor(emp => emp.Name).NotEmpty().WithMessage("This field can't be blank").Length(3, 250).WithMessage("Plese specify a first name.");
+            RuleFor(emp => emp.Solution).NotEmpty().WithMessage("This field can't be blank").Length(1, 1000000000).WithMessage("Plese specify a last name.");
+            RuleFor(emp => emp.Category).NotEmpty().WithMessage("This field can't be blank").Length(3, 250).WithMessage("Plese specify a category.");
         }
     }
 }

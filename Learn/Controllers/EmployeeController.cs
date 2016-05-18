@@ -7,6 +7,8 @@ using System.Web.Mvc;
 
 namespace Learn.Controllers
 {
+    [Authorize(Roles = "User")]
+    [RoutePrefix("Employee")]
     public class EmployeeController : Controller
     {
         
@@ -38,14 +40,16 @@ namespace Learn.Controllers
             
         }
 
-        [Authorize(Roles = "Admin")]
         public ActionResult Add()
         {
             log.WriteInfo("Employee/Add Get Action");
             return View();
         }
+        public ActionResult Details(int id)
+        {
+            return View(_repository.GetById(id));
+        }
 
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Add(Employee model)
@@ -55,12 +59,10 @@ namespace Learn.Controllers
             log.WriteError("Obiekt nie został dodany");
             return View(model);
         }
-        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             return View(_repository.GetById(id));
         }
-        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Employee model)

@@ -115,7 +115,7 @@ namespace Learn.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First Name.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string FirstName {
             get {
@@ -124,7 +124,7 @@ namespace Learn.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Last Name.
+        ///   Looks up a localized string similar to Category.
         /// </summary>
         public static string LastName {
             get {

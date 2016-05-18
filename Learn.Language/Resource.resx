@@ -136,10 +136,10 @@
     <value>Edit</value>
   </data>
   <data name="FirstName" xml:space="preserve">
-    <value>First Name</value>
+    <value>Name</value>
   </data>
   <data name="LastName" xml:space="preserve">
-    <value>Last Name</value>
+    <value>Category</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
