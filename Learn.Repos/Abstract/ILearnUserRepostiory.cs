@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Learn.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Learn.Repos.Abstract
 {
-    public interface IEmployeesRepository<T> : IRepository<T>
+    public interface ILearnUserRepostiory<T> : IRepository<T>
     {
-        IEnumerable<T> Search(string search);
+        void AllowToAccess(string login);
     }
 }

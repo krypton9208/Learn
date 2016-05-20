@@ -9,6 +9,7 @@ using Learn.Models;
 
 using Learn.Models.NHibernate;
 using SharpArch.NHibernate;
+using Learn.Repos.Abstract;
 
 namespace Learn.Controllers
 {
@@ -18,8 +19,9 @@ namespace Learn.Controllers
         public AccountController()
             : this(new UserManager<LearnUser>(new UserStore<LearnUser>(Models.NHibernate.NHibernateSession.OpenSession())))
         {
+            
         }
-
+        
         public AccountController(UserManager<LearnUser> userManager)
         {
             UserManager = userManager;
@@ -33,6 +35,18 @@ namespace Learn.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        public ActionResult AllowUser()
+        {
+            return View();
+        }
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult AllowUser(string login)
+        {
+
             return View();
         }
 

@@ -12,19 +12,27 @@ namespace Learn.Controllers
     public class EmployeeController : Controller
     {
         
+        private readonly ILearnUserRepostiory<LearnUser> _userRepo;
         private readonly IEmployeesRepository<Employee> _repository;
-        private readonly ILoggerService<EmployeeController> log;
+        //private readonly ILoggerService<EmployeeController> log;
 
-        public EmployeeController(IEmployeesRepository<Employee> repo, ILoggerService<EmployeeController> _log)
+        public EmployeeController(IEmployeesRepository<Employee> repo, ILearnUserRepostiory<LearnUser> userRepo)
         {
             _repository = repo;
-            log = _log;
+            _userRepo = userRepo;
         }
         
         public ActionResult Index()
         {
-            log.WriteInfo("Employee/Index GetAction");
+            //log.WriteInfo("Employee/Index GetAction");
             return View(_repository.GetAll);
+        }
+
+        [HttpPost]
+        public ActionResult Index(string search)
+        {
+            //log.WriteInfo("Employee/Index SearchAction");
+            return View(_repository.Search(search));
         }
 
         public ActionResult ChangeLanguage()
@@ -39,10 +47,27 @@ namespace Learn.Controllers
             return RedirectToAction("Index");
             
         }
+        public ActionResult Home()
+        {
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AllowUser()
+        {
+            return View();
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult AllowUser(string login)
+        {
+            _userRepo.AllowToAccess(login);
+            return RedirectToAction("Index");
+        }
 
         public ActionResult Add()
         {
-            log.WriteInfo("Employee/Add Get Action");
+            //log.WriteInfo("Employee/Add Get Action");
             return View();
         }
         public ActionResult Details(int id)
@@ -56,7 +81,7 @@ namespace Learn.Controllers
         {
             if (_repository.Add(model) >=0) 
                 return RedirectToAction("Index");
-            log.WriteError("Obiekt nie został dodany");
+            //log.WriteError("Obiekt nie został dodany");
             return View(model);
         }
         public ActionResult Delete(int id)
@@ -69,7 +94,7 @@ namespace Learn.Controllers
         {
             if (_repository.Delete(model))
                return RedirectToAction("Index");
-            log.WriteError("Obiekt nie został usunięty.");
+            //log.WriteError("Obiekt nie został usunięty.");
             return View();
         }
 
@@ -84,7 +109,7 @@ namespace Learn.Controllers
         {
             if (_repository.Update(model))
                 return RedirectToAction("Index");
-            log.WriteError("Obiekt nie został zaaktualizowany.");
+            //log.WriteError("Obiekt nie został zaaktualizowany.");
             return View(model);
         }
     }

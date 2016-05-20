@@ -10,6 +10,7 @@ using Microsoft.Owin;
 using SharpArch.NHibernate.Web.Mvc;
 using Learn.Language;
 using Learn.Controllers;
+using Microsoft.AspNet.Identity;
 
 [assembly: OwinStartupAttribute(typeof(Learn.Startup))]
 
@@ -24,7 +25,8 @@ namespace Learn
             // REGISTER DEPENDENCIES
             //builder.RegisteType<NHibernateSession>().As<ISession>().InstancePerRequest();
             builder.RegisterType<EmployeesRepository>().As<IEmployeesRepository<Employee>>().InstancePerRequest();
-            builder.RegisterGeneric(typeof(LoggerService<>)).As(typeof(ILoggerService<>));
+            builder.RegisterType<LearnUserRepository>().As<ILearnUserRepostiory<LearnUser>>().InstancePerRequest();
+            //builder.RegisterGeneric(typeof(LoggerService<>)).As(typeof(ILoggerService<>));
             //builder.RegisterGeneric(typeof(Language.Language)).As(typeof(Language.ILanguage));
             builder.RegisterType<Language.Language>().As<Language.ILanguage>().InstancePerLifetimeScope();
             builder.RegisterControllers(typeof(MvcApplication).Assembly);

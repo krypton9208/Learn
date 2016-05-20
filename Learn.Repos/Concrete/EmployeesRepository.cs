@@ -3,6 +3,7 @@ using Learn.Models.NHibernate;
 using Learn.Repos.Abstract;
 using NHibernate;
 using NHibernate.Linq;
+using NHibernate.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +22,13 @@ namespace Learn.Repos.Concrete
             _session = NHibernateSession.OpenSession();
         }
 
-      
+
+        public IEnumerable<Employee> Search(string search)
+        {
+            var t = _session.Query<Employee>().ToList();
+            return t.Where(x => x.Name.Contains(search) || x.Category.Contains(search)).ToList();
+
+        }
+
     }
 }
