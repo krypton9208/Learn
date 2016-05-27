@@ -25,14 +25,28 @@ namespace Learn.Controllers
         public ActionResult Index()
         {
             //log.WriteInfo("Employee/Index GetAction");
-            return View(_repository.GetAll);
+            return View(_repository.GetAllNew);
         }
 
+
         [HttpPost]
-        public ActionResult Index(string search)
+        public ActionResult Index(string search, string Categories)
         {
-            //log.WriteInfo("Employee/Index SearchAction");
+            if (Categories != string.Empty && search != string.Empty)
+            {
+                return View(_repository.Search(search, Categories));
+            }
+            else if (Categories == string.Empty && search != string.Empty)
+            {
+                return View(_repository.Search(search));
+            }
+            else if (Categories != string.Empty && search == string.Empty)
+            {
+                return View(_repository.GetAllByCat(Categories));
+            }
+            else
             return View(_repository.Search(search));
+            //log.WriteInfo("Employee/Index SearchAction");
         }
 
         public ActionResult ChangeLanguage()
